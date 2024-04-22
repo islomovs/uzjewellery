@@ -1,0 +1,79 @@
+{% extends 'admin/master.html' %} {% block body %}
+<div class="admin-welcome">
+  <h2>Welcome to Your Admin Dashboard</h2>
+  <p><strong>Greetings, Administrator!</strong></p>
+  <p>
+    Welcome to your dedicated management console. From here, you have the full
+    capability to control and manage the digital contents of the card catalog,
+    ensuring that your database is always up to date and serving your users with
+    the latest information available.
+  </p>
+
+  <h3>How to Use This Panel</h3>
+  <p>
+    This admin panel is designed to facilitate easy management of the cards
+    displayed on your platform. Each card represents a unique entry that can be
+    managed through the following CRUD (Create, Read, Update, Delete)
+    operations:
+  </p>
+
+  <ol>
+    <li>
+      <strong>Create</strong>: Add new cards by filling out the designated form
+      with the card's title, description, image, and other relevant details.
+      Simply navigate to the "Create" section and enter the details into the
+      form fields. Submit the form to save the new card to the database.
+    </li>
+    <li>
+      <strong>Read</strong>: View all current entries under the "Cards List"
+      section. Here, you can review all details associated with each card,
+      including titles, descriptions, and images, to ensure all information is
+      accurate and up to date.
+    </li>
+    <li>
+      <strong>Update</strong>: Modify existing cards to correct details or
+      update information. Find the card you wish to update in the "Cards List"
+      and click on the "Edit" button. You'll be able to change any of the
+      information displayed and save the updates with just a few clicks.
+    </li>
+    <li>
+      <strong>Delete</strong>: Remove outdated or unnecessary cards from the
+      catalog. Next to each card entry in the "Cards List" is a "Delete" button.
+      Use this to remove an entry permanently from the database. Please use this
+      feature with caution, as this action cannot be undone.
+    </li>
+  </ol>
+
+  <h3>Best Practices</h3>
+  <ul>
+    <li>
+      <strong>Regular Updates</strong>: Regularly review and update card entries
+      to keep the database fresh and relevant.
+    </li>
+    <li>
+      <strong>Consistent Formatting</strong>: When adding or editing cards,
+      maintain a consistent format for dates, titles, and descriptions to ensure
+      a seamless user experience.
+    </li>
+    <li>
+      <strong>Backup Frequently</strong>: Ensure you back up the database
+      regularly to prevent data loss.
+    </li>
+  </ul>
+
+  <p>
+    Your role as an administrator is crucial in maintaining the integrity and
+    usefulness of our digital offerings. Should you encounter any issues or if
+    you have suggestions on how to improve the admin experience, do not hesitate
+    to contact our support team.
+  </p>
+
+  <p>
+    <strong
+      >Thank you for ensuring our content remains accurate and valuable to all
+      users!</strong
+    >
+  </p>
+</div>
+
+{% endblock %}

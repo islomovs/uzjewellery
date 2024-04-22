@@ -1,0 +1,599 @@
+{% from "macros.html" import navbar, download_link, form_field %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uzbek Jewellery Fair 2024</title>
+    <link rel="icon" href="../../static/images/logo_uzj.png" type="image/png" />
+    <link rel="stylesheet" href="../../static/css/style.css" />
+    <link rel="stylesheet" href="../../static/css/registration.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {{ navbar('#242d54', links=[{'url': '/', 'text': 'Main'}, {'url': '/en/about',
+    'text': 'About Us'}, {'url': '/en#dates', 'text': 'Dates'}, {'url': '/en/catalog',
+    'text': 'Catalog'}, {'url': '/en#contact', 'text': 'Contact'}],
+    button_text='Register') }}
+    <div id="popupBackdrop" class="popup-backdrop"></div>
+    <div class="popup">
+      <div class="form">
+        <div class="form-header">
+          <div class="form-header-top">
+            <h2>Registration</h2>
+            <div class="close-btn">&times;</div>
+          </div>
+          <div class="form-header-bottom">
+            <div class="participant-form-btn">For participant</div>
+            <div class="visitor-form-btn">For visitors</div>
+          </div>
+        </div>
+        <form
+          id="registrationForm"
+          action="https://test-api.mdholding.uz/api/signup"
+          method="post"
+        >
+          <div class="form-col">
+            <p>
+              Please ensure you download and read the
+              <b>Participant's Guide</b> and
+              <b>Exhibition Area Layout</b> before registering. <br />
+              <br />
+              These documents contain important details about the event and
+              venue to guide your preparation.
+            </p>
+            {{ download_link('../../static/files/Full information.pdf', 'Participant’s Guide.pdf',
+            '../../static/images/icons/file.svg', 'Participant’s Guide') }} {{
+            download_link('../../static/files/smth (eng) 2.pdf', 'Layout of exhibition
+            areas.pdf', '../../static/images/icons/file.svg', 'Layout of
+            exhibition areas.pdf') }} {{ form_field('text', 'fullName', 'Full
+            Name', required=true) }} {{ form_field('text', 'phoneNumber', 'Phone
+            Number', required=true) }} {{ form_field('text', 'email', 'Email',
+            required=true) }} {{ form_field('text', 'country', 'Country',
+            required=true) }} {{ form_field('text', 'organization',
+            'Organization', required=true) }} {{ form_field('select',
+            'dropdownField', 'Stand size', options=[('9', '9'), ('18', '18'),
+            ('27', '27'), ('36', '36'), ('45', '45'), ('54', '54')],
+            required=true) }}
+            <p class="note">Note: The minimum stand size is 9 sq.m. (3x3m).</p>
+
+            {{ download_link('../../static/files/Application.docx', 'Application agreement
+            for participation in the exhibition.docx',
+            '../../static/images/icons/file.svg', 'Application agreement for
+            participation in the exhibition') }}
+            <p class="note">
+              Note: Download given document. Fill it out and upload it.
+            </p>
+            <p class="note">
+              * The number of the stand (exhibition area) must be previously
+              agreed with the Organizer using the contacts listed on the
+              website.
+            </p>
+            <div id="drop-area" class="drop-area">
+              <div class="drop-area-inner">
+                <img src="../../static/images/icons/add.svg" alt="Add Icon" />
+                <label for="fileElem" class="file-upload-button"
+                  >Click to upload file or drag & drop it here</label
+                >
+                <br />
+                Supported formats: PDF, DOCX, WORD
+                <p id="file-name">No file chosen</p>
+                <div
+                  id="upload-success"
+                  class="upload-success"
+                  style="display: none"
+                >
+                  File uploaded successfully!
+                </div>
+                <input
+                  type="file"
+                  id="fileElem"
+                  multiple
+                  hidden
+                  onchange="handleFiles(this.files)"
+                />
+              </div>
+            </div>
+            <div class="register-btn v-register">Register</div>
+          </div>
+        </form>
+        <form
+          id="visitorRegistrationForm"
+          action="https://test-api.mdholding.uz/api/signup"
+          method="post"
+        >
+          <div class="form-col">
+            {{ form_field('text', 'vfullName', 'Full Name', required=true) }} {{
+            form_field('text', 'vphoneNumber', 'Phone Number', required=true) }}
+            {{ form_field('text', 'vemail', 'Email', required=true) }} {{
+            form_field('text', 'vcountry', 'Country', required=true) }} {{
+            form_field('text', 'vorganization', 'Organization', required=true)
+            }}
+            <div class="register-btn v-register visitor-submit">Register</div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="confirmation-popup">
+      <div class="confirmation-popup-inner">
+        <div class="close-btn">&times;</div>
+        <img src="../../static/images/icons/done.svg" alt="Done Icon" />
+        <p>
+          Congratulations! You successfully registered to Uzbek Jewellery Fair
+          2024!
+        </p>
+      </div>
+    </div>
+
+    {% block body %}{% endblock %}
+    <div class="footer-top">
+      <div class="company-heading">ORGANIZED BY</div>
+      <div class="company">
+        <img src="../../../static/images/Logo.png" class="company-logo" />
+        <div class="company-name">
+          <p class="company-title">"O'ZBEKZARGARSANOATI"</p>
+          <p class="company-subtitle">
+            UZBEKISTAN JEWELLERY INDUSTRY ASSOCIATION
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <div class="ql-list">
+          <h3 class="ql-header">Quick Links</h3>
+          <nav>
+            <ul>
+              <li><a href="/">Main</a></li>
+              <li><a href="/en/about">About Us</a></li>
+              <li><a href="#dates">Dates</a></li>
+              <li><a href="/en/catalog">Catalog</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="contact-list">
+          <h3 class="ql-header">Contact us</h3>
+          <a href="https://g.co/kgs/wGddftr" target="_blank"
+            >Silk Road Samarkand International Tourism Center</a
+          >
+          <div class="phone-num-list">
+            <a href="tel:+998999981119">+998 99 998-11-19 (eng, uzb)</a><br />
+            <a href="tel:+998998871031">+998 99 887-10-31 (eng, uzb)</a><br />
+            <a href="tel:+998999274949">+998 99 927-49-49 (turkish, uzb)</a>
+          </div>
+          <a href="mailto:uzbekzargarsanoati@gmail.com"
+            >uzbekzargarsanoati@gmail.com</a
+          >
+        </div>
+      </div>
+      <div class="footer-bottom-right">
+        <div class="socials">
+          <a
+            href="https://www.instagram.com/uzbekjewelleryfair2024?igsh=c3pnM3phbTA1ODBx"
+            target="_blank"
+            ><div class="icon-box">
+              <img src="../../static/images/insta.svg" alt="" /></div
+          ></a>
+          <a
+            href="https://youtu.be/RRR1uXAV9nQ?si=ZWWu6q23RfptQQmH"
+            target="_blank"
+            ><div class="icon-box">
+              <img src="../../static/images/youtube.svg" alt="" /></div
+          ></a>
+          <a
+            href="https://www.facebook.com/UzbekJewelleryFair?mibextid=ZbWKwL"
+            target="_blank"
+            ><div class="icon-box">
+              <img src="../../static/images/meta.svg" alt="" /></div
+          ></a>
+        </div>
+        <p>&copy Uzbek Jewellery Fair 2024.</p>
+        <p>All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll(".navbar-links li a");
+    
+      function updateActiveLink() {
+        const currentPath = window.location.pathname;
+        const currentHash = window.location.hash;
+    
+        navLinks.forEach((link) => {
+          const linkHref = link.getAttribute("href");
+          const isHashLink = linkHref.startsWith("/en#");
+    
+          // Debugging statements
+          // console.log("Link href: ", linkHref);
+          // console.log("Current hash: ", currentHash);
+          // console.log("Is hash link: ", isHashLink);
+    
+          if (isHashLink) {
+            // Remove the initial slash and hash to correctly compare
+            const modifiedLink = linkHref.slice(3); // Remove '/#' to make it just '#...'
+            // console.log("Modified link for comparison: ", modifiedLink);
+    
+            if (currentHash === modifiedLink) {
+              link.classList.add("active-link");
+              // console.log("Active class added to: ", linkHref);
+            } else {
+              link.classList.remove("active-link");
+            }
+          } else {
+            // For page route links, normalize paths and compare
+            const linkPath = new URL(link.href, window.location.origin).pathname;
+            // console.log("Link path: ", linkPath);
+            // console.log("Current path: ", currentPath);
+    
+            if (linkPath === currentPath) {
+              link.classList.add("active-link");
+            } else {
+              link.classList.remove("active-link");
+            }
+          }
+        });
+      }
+    
+      // Update active link on page load and on hash change
+      updateActiveLink();
+      window.addEventListener("hashchange", updateActiveLink);
+    });
+    </script>
+    
+  <script>
+    document.querySelector(".lang-btn").addEventListener("click", function () {
+      document.querySelector(".lang-dropdown").style.display = "block";
+    });
+
+    // Optional: Hide dropdown when clicked outside
+    window.addEventListener("click", function (e) {
+      if (!document.querySelector(".navbar-lang").contains(e.target)) {
+        document.querySelector(".lang-dropdown").style.display = "none";
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const popup = document.querySelector(".popup");
+      const backdrop = document.getElementById("popupBackdrop");
+      const successPopup = document.querySelector(".confirmation-popup"); // Ensure this selector matches your success popup
+      const participantFormBtn = document.querySelector(
+        ".participant-form-btn"
+      );
+      const visitorFormBtn = document.querySelector(".visitor-form-btn");
+      const participantForm = document.getElementById("registrationForm");
+      const visitorForm = document.getElementById("visitorRegistrationForm");
+      const closeButton = document.querySelectorAll(".popup .close-btn"); // Modified to select all close buttons
+
+      // Function to reset popup state for next open
+      function resetPopupState() {
+        participantFormBtn.classList.add("active");
+        visitorFormBtn.classList.remove("active");
+        participantForm.style.display = ""; // Show participant form
+        visitorForm.style.display = "none"; // Hide visitor form
+        // Optionally reset form inputs here
+      }
+
+      // Show participant form by default when popup is opened
+      document.querySelectorAll(".open-popup").forEach(function (button) {
+        button.addEventListener("click", function () {
+          popup.classList.add("active");
+          backdrop.style.display = "block";
+          resetPopupState();
+          popup.scrollTop = 0;
+        });
+      });
+
+      // Close popup functionality - Adapted to close any active popup
+      [...closeButton, backdrop, successPopup].forEach((element) => {
+        element.addEventListener("click", function (e) {
+          e.stopPropagation(); // Prevents click inside popup from closing it
+          popup.classList.remove("active");
+          successPopup.classList.remove("active"); // Hide success popup if it was shown
+          backdrop.style.display = "none";
+        });
+      });
+
+      // Toggle forms on button click
+      participantFormBtn.addEventListener("click", function () {
+        this.classList.add("active");
+        visitorFormBtn.classList.remove("active");
+        participantForm.style.display = "";
+        visitorForm.style.display = "none";
+      });
+
+      visitorFormBtn.addEventListener("click", function () {
+        this.classList.add("active");
+        participantFormBtn.classList.remove("active");
+        visitorForm.style.display = "";
+        participantForm.style.display = "none";
+      });
+
+      // Show success popup and hide registration popup
+      function showSuccessPopup() {
+        popup.classList.remove("active"); // Hide the main registration popup
+        successPopup.classList.add("active"); // Show the success popup
+        backdrop.style.display = "block";
+      }
+
+      // Assuming you have buttons with class 'v-register' for submitting forms
+      document.querySelectorAll(".v-register").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          showSuccessPopup();
+        });
+      });
+    });
+  </script>
+  <script>
+    let dropArea = document.getElementById("drop-area");
+
+    ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+      dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    ["dragenter", "dragover"].forEach((eventName) => {
+      dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    ["dragleave", "drop"].forEach((eventName) => {
+      dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight() {
+      dropArea.classList.add("highlight");
+    }
+
+    function unhighlight() {
+      dropArea.classList.remove("highlight");
+    }
+
+    dropArea.addEventListener("drop", handleDrop, false);
+
+    function handleDrop(e) {
+      let dt = e.dataTransfer;
+      let files = dt.files;
+
+      handleFiles(files);
+    }
+
+    function handleFiles(files) {
+      const fileList = document.getElementById("file-name"); // Get the file name element
+      if (files.length > 1) {
+        fileList.innerHTML = `${files.length} files selected`; // Display number of files if more than one
+      } else {
+        fileList.innerHTML = files[0].name; // Display file name if only one file is selected
+      }
+
+      // Assuming you still want to log or process the files
+      [...files].forEach(uploadFile);
+    }
+
+    function uploadFile(file) {
+      console.log("Uploading", file.name);
+
+      // Simulate a file upload process
+      setTimeout(() => {
+        // Show success message
+        document.getElementById("upload-success").style.display = "block";
+
+        // Hide the success message after a few seconds
+        setTimeout(() => {
+          document.getElementById("upload-success").style.display = "none";
+        }, 5000); // Adjust time as needed
+      }, 1000); // Simulate upload time
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const registerButton = document.querySelector(".register-btn.v-register");
+      const form = document.getElementById("registrationForm");
+
+      registerButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
+        const participantData = {
+          userType: "participant",
+          email: form.querySelector('[name="email"]').value,
+          phone: form.querySelector('[name="phoneNumber"]').value,
+          fullName: form.querySelector('[name="fullName"]').value,
+          country: form.querySelector('[name="country"]').value,
+          organization: form.querySelector('[name="organization"]').value,
+          space: form.querySelector('[name="dropdownField"]').value,
+        };
+
+        // Prepare FormData for submission
+        const formData = new FormData();
+        formData.append("participant", JSON.stringify(participantData));
+
+        const fileInput = document.getElementById("fileElem");
+        if (fileInput.files.length > 0) {
+          formData.append("file", fileInput.files[0]);
+        }
+
+        // Make the fetch request
+        fetch("https://test-api.mdholding.uz/api/signup", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              return response.text().then((text) => {
+                throw new Error(
+                  `Server responded with ${response.status}: ${text}`
+                );
+              });
+            }
+            return response.text(); // Handle text response or adjust if JSON
+          })
+          .then((data) => {
+            console.log("Success:", data);
+            // Clear the form using custom function
+            clearFormFields();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+
+      // Function to clear all text fields explicitly
+      function clearFormFields() {
+        form.querySelector('[name="email"]').value = "";
+        form.querySelector('[name="phoneNumber"]').value = "";
+        form.querySelector('[name="fullName"]').value = "";
+        form.querySelector('[name="country"]').value = "";
+        form.querySelector('[name="organization"]').value = "";
+        form.querySelector('[name="dropdownField"]').value = ""; // Reset dropdown if default value is set
+        document.getElementById("file-name").textContent = "No file chosen"; // Reset file name display
+        document.getElementById("upload-success").style.display = "none"; // Hide the upload success message
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const registerButton = document.querySelector(
+        ".register-btn.v-register.visitor-submit"
+      );
+      const form = document.getElementById("visitorRegistrationForm");
+
+      registerButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
+        const participantData = {
+          userType: "attendant",
+          email: form.querySelector('[name="vemail"]').value,
+          phone: form.querySelector('[name="vphoneNumber"]').value,
+          fullName: form.querySelector('[name="vfullName"]').value,
+          country: form.querySelector('[name="vcountry"]').value,
+          organization: form.querySelector('[name="vorganization"]').value,
+        };
+
+        // Use FormData for the file upload
+        const formData = new FormData();
+        formData.append("participant", JSON.stringify(participantData));
+
+        // // Log the FormData contents
+        // for (let [key, value] of formData.entries()) {
+        //   console.log(`${key}: ${value}`);
+        // }
+
+        // Make the fetch request
+        fetch("https://test-api.mdholding.uz/api/signup", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              // If response is not ok, throw an error
+              return response.text().then((text) => {
+                throw new Error(
+                  `Server responded with ${response.status}: ${text}`
+                );
+              });
+            }
+            // Assuming the successful response might not be JSON
+            return response.text();
+          })
+          .then((data) => {
+            console.log("Success:", data);
+            // Reset the form fields
+            clearFormFields(form);
+            document.getElementById("file-name").textContent = "No file chosen";
+            // Hide the upload success message if it was displayed
+            document.getElementById("upload-success").style.display = "none";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+
+      function clearFormFields(form) {
+        // Clear each text field manually
+        form.querySelector('[name="vemail"]').value = "";
+        form.querySelector('[name="vphoneNumber"]').value = "";
+        form.querySelector('[name="vfullName"]').value = "";
+        form.querySelector('[name="vcountry"]').value = "";
+        form.querySelector('[name="vorganization"]').value = "";
+      }
+    });
+  </script>
+
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("registrationForm");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Construct the participant data object
+        const participantData = {
+          userType: "participant",
+          email: form.querySelector('[name="email"]').value,
+          phone: form.querySelector('[name="phoneNumber"]').value,
+          fullName: form.querySelector('[name="fullName"]').value,
+          country: form.querySelector('[name="country"]').value,
+          organization: form.querySelector('[name="organization"]').value,
+          space: form.querySelector('[name="dropdownField"]').value,
+        };
+
+        // Use FormData for the file upload
+        const formData = new FormData();
+        formData.append("participant", JSON.stringify(participantData));
+
+        const fileInput = document.getElementById("fileElem");
+        if (fileInput.files.length > 0) {
+          formData.append("file", fileInput.files[0]);
+        }
+
+        // Make the fetch request
+        fetch("https://test-api.mdholding.uz/api/signup", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              // If response is not ok, throw an error
+              return response.text().then((text) => {
+                throw new Error(
+                  `Server responded with ${response.status}: ${text}`
+                );
+              });
+            }
+            // Assuming the successful response might not be JSON
+            return response.text();
+          })
+          .then((data) => {
+            console.log("Success:", data);
+            // Display success message
+            alert("You Successfully Signed Up!");
+            // Clear the form
+            form.reset();
+            document.getElementById("file-name").textContent = "No file chosen";
+            // Hide the upload success message if it was displayed
+            document.getElementById("upload-success").style.display = "none";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            // Optionally display the error to the user
+            alert(error.message);
+          });
+      });
+    });
+  </script> -->
+</html>

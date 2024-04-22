@@ -1,0 +1,28 @@
+{% extends "./ru/layout.html" %} {% from "macros.html" import heading %} {%
+block body %}
+<div class="catalog-section">
+  {{ heading('KATALOG', '/uz', 'Ortga') }} {% for year, cards in
+  cards_by_year.items() %}
+  <div class="year-section">
+    <p class="catalog-title">{{ year }} Ishtirokchilar:</p>
+    <div class="catalog-card-box">
+      {% for card in cards %}
+      <div class="catalog-card">
+        <img
+          src="{{ url_for('static', filename='images/uploads/' + card.image_filename) }}"
+          alt="{{ card.title }}"
+        />
+        <p class="card-title">{{ card.title }}</p>
+        <p class="card-info">{{ card.description }}</p>
+        <a
+          class="card-btn"
+          href="{{ url_for('uz_company_detail', card_id=card.id) }}"
+          >Ko'proq</a
+        >
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

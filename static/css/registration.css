@@ -1,0 +1,324 @@
+body {
+  height: 100vh;
+}
+.popup-backdrop {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Ensure this is below your popup but above everything else */
+}
+.form-header {
+  display: flex;
+  flex-direction: column;
+}
+.form-header-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.form-header-bottom {
+  display: flex;
+  width: 100%;
+}
+
+.participant-form-btn,
+.visitor-form-btn {
+  flex: 1;
+  color: #7c7c7c;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 20px; /* Adjust based on your design */
+  transition: all 0.3s ease; /* Smooth transition for underline */
+}
+.participant-form-btn::after,
+.visitor-form-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #5d6c94;
+  transition: width 0.6s ease;
+}
+.active {
+  color: #1c1c1c;
+}
+.active::after {
+  width: 100%;
+}
+
+.popup .form h2 {
+  text-align: center;
+  margin: 10px 0 20px;
+  font-size: 32px;
+  font-weight: 500;
+  color: #1c1c1c;
+}
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  width: 44px;
+  height: 44px;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+}
+.confirmation-popup {
+  /* Initial, invisible state of the popup */
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95); /* Slightly scaled down */
+  visibility: hidden;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 385px;
+  padding: 32px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out,
+    visibility 200ms ease-in-out 200ms;
+  z-index: 10000;
+  overflow: auto; /* Enables scrolling */
+}
+.confirmation-popup.active {
+  z-index: 10000;
+  /* Visible and scaled to normal size */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s; /* Apply transitions without delay when adding `.active` */
+}
+.confirmation-popup-inner p {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #1c1c1c;
+}
+.confirmation-popup img {
+  width: 140px;
+  height: 140px;
+  color: #242d54;
+  margin: 48px auto;
+}
+.confirmation-popup-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.confirmation-popup-inner .close-btn {
+  align-self: flex-end;
+}
+.popup {
+  /* Initial, invisible state of the popup */
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95); /* Slightly scaled down */
+  visibility: hidden;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 750px;
+  max-height: 80vh; /* Adjust based on your preference, e.g., 80% of the viewport height */
+  padding: 56px 48px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out,
+    visibility 200ms ease-in-out 200ms;
+  z-index: 10000;
+  overflow: auto; /* Enables scrolling */
+}
+.popup.active {
+  z-index: 10000;
+  /* Visible and scaled to normal size */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s; /* Apply transitions without delay when adding `.active` */
+}
+.popup .form .form-col {
+  display: flex;
+  flex-direction: column;
+}
+.popup .form .form-col p {
+  font-size: 18px;
+  line-height: 28px;
+  margin: 32px 0;
+}
+.popup .form .form-col .input-data {
+  margin: 12px 0;
+}
+.popup .form .form-col .input-data:nth-child(9) {
+  margin-bottom: 0;
+}
+.popup .form .form-col .note {
+  font-weight: 400;
+  margin: 16px 0 40px 0;
+}
+.select-with-icon {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.select-dropdown {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  flex-grow: 1;
+  padding-right: 24px; /* Adjust to make space for the icon */
+  cursor: pointer;
+}
+.select-dropdown option {
+  padding: 4px 8px; /* Example padding, adjust as needed */
+}
+.select-icon {
+  position: absolute;
+  right: 8px; /* Adjust as needed */
+  pointer-events: none; /* Allows clicks to pass through to the select element */
+}
+.drop-area {
+  border: 1px dashed #d2d2d2;
+  border-radius: 26px;
+  width: 100%;
+  height: auto;
+  color: #a4a4a4;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 40px 0;
+  padding: 24px;
+}
+.drop-area-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.drop-area img {
+  color: #1c1c1c;
+}
+.file-upload-button {
+  color: #1c1c1c;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+  line-height: 24px;
+}
+#file-name {
+  font-weight: 500;
+  color: #1c1c1c;
+  margin: 20px;
+}
+
+.upload-success {
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
+}
+.popup .form .form-col h3 {
+  margin-bottom: 20px;
+}
+.download-link {
+  width: 100%;
+  height: 56px;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  gap: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.download-link .main-icon {
+  margin-right: 16px;
+}
+.download-link img,
+.download-link .main-icon {
+  height: 24px;
+  width: 24px;
+}
+.download-link div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.popup .form .form-col .register-btn {
+  background-color: #354779;
+  color: #ffffff;
+  align-self: flex-end;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .popup {
+    width: 90%;
+    padding: 56px 16px;
+  }
+  .popup .form h2 {
+    font-size: 24px;
+  }
+  .form-header-bottom {
+    margin: 32px 0;
+  }
+  #registrationForm .form-col {
+    margin: 0;
+  }
+  .popup .form .form-col p {
+    margin: 24px 0;
+    font-size: 14px;
+    line-height: 28px;
+  }
+  .download-link {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 16px 14px;
+  }
+  .download-link img,
+  .download-link .main-icon {
+    height: 16px;
+    width: 16px;
+  }
+  .popup .form .form-col .note {
+    margin-top: 12px;
+  }
+  .drop-area {
+    margin: 0;
+  }
+  .popup .form .form-col .register-btn {
+    align-self: flex-end;
+    margin-top: 24px;
+    width: 127px;
+    height: 51px;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  .confirmation-popup {
+    width: 90%;
+    padding: 32px;
+  }
+  .confirmation-popup img {
+    margin: 16px auto;
+  }
+}

@@ -1,0 +1,271 @@
+{% extends "./uz/layout.html" %} {% from "macros.html" import date_card,
+contact_info_row %} {% block body %}
+
+<div class="banner-section">
+  <div class="banner-container">
+    <div class="banner-date">
+      <p>24</p>
+      <hr class="banner-date-line" />
+      <p>25</p>
+      <hr class="banner-date-line" />
+      <p>26</p>
+      <hr class="banner-date-line" />
+      <p>MAY</p>
+    </div>
+    <div class="banner-info">
+      <p>TAQDIM ETAMIZ</p>
+      <p>Uzbek Jewellery</p>
+      <p>Fair 2024.</p>
+      <p>
+        Zargarlik sanoatining zamonaviy uskuna, texnologiyalari va zargarlik
+        buyumlari “Uzbek Jewellery Fair-2024” ikkinchi xalqaro
+        ko'rgazma-savdosi.
+      </p>
+      <div class="banner-btns">
+        <div class="register-btn open-popup">Roʻyxatdan oʻtish</div>
+        <a href="/ru/about"><div class="learn-more-btn">Ko'proq</div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-about-section">
+  <p class="main-title">Yarmarka haqida</p>
+  <div class="main-about-info">
+    <div class="main-about-text">
+      <p>
+        2023-yil may oyida Toshkent shahrida o‘tkazilgan ko‘rgazma-savdosi -
+        ishtirokchilar va 3000 dan ortiq tashrif buyuruvchilarining e’tirofiga
+        sazovor bo‘lgandi. Xususan, mazkur ko‘rgazma-savdosida 50 dan ortiq
+        mahalliy va xorijiy korxonalar 100 mln. dollarga yaqin hamkorlik
+        shartnomalarini imzolashgan va sotuv amalga oshirishgan. <br />
+        <br />
+        Mintaqada 90 milliondan ortiq aholi istiqomat qiladi. O‘zbekiston esa
+        Markaziy Osiyoning zargarlik sanoati xabi bo‘lish uchun yirik qadamlar
+        tashlamoqda. Bugungi kunda O‘zbekiston oltin qazib oluvchi TOP-10
+        mamlakatlardan biri hisoblanadi. Mamlakat qonunchilik parametrlari ham
+        zargarlik sanoati biznesi vakillari uchun qulay takliflarga ega,
+        masalan: qimmatbaho metallarni to‘g‘ridan-to‘g‘ri shartnomalar va birja
+        savdolari orqali xarid qilish imkoniyati mavjud.
+      </p>
+      <a href="/uz/about">
+        <div class="main-about-btn">Ko'proq</div>
+      </a>
+    </div>
+    <div class="main-about-grid">
+      <div class="main-about-grid-item">
+        <img src="../static/images/about1.jpg" alt="" />
+      </div>
+      <div class="main-about-grid-item">
+        <img src="../static/images/about2.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dates" class="dates-section">
+  <p class="main-title">Ko'rgazma kunlari va vaqti</p>
+  <p class="main-subtitle">
+    Ochilish marosimi 24 may kuni soat 11:00 da bo'lib o'tadi
+  </p>
+  <div class="date-grid">
+    {{ date_card('24.05.2024', [ {'time': '11:00 - 11:30', 'description':
+    'Ko‘rgazmaning ochilish marosimi.'}, {'time': '11:30 - 17:00',
+    'description': 'Ishtirokchilar bilan biznes uchrashuvlari, muzokaralar.'} ])
+    }} {{ date_card('25.05.2024', [ {'time': '10:00 - 17:00', 'description':
+    'Ishtirokchilar bilan biznes uchrashuvlari.'}]) }} {{
+    date_card('26.05.2024', [ {'time': '10:00 - 15:00', 'description':
+    'Ishtirokchilar bilan biznes uchrashuvlari, muzokaralar.'}, {'time': '15:00
+    - 16:00', 'description': 'G\'oliblarni e\'lon qilish.'}, {'time': '16:30 -
+    17:00', 'description': 'Ko‘rgazmaning yopilishi, ishtirokchilarga diplomlar
+    topshirilishi.'}]) }}
+  </div>
+</div>
+
+<div class="countdown-section" id="countdown2">
+  <div class="countdown-header">
+    <h2>
+      ZARGARLIK SANOATINING ZAMONAVIY USKUNA, TEXNOLOGIYALARI VA ZARGARLIK
+      BUYUMLARI “Uzbek Jewellery Fair-2024” IKKINCHI XALQARO KO‘RGAZMA-SAVDOSI.
+    </h2>
+    <p>Juma 24/05/2024, 06:00</p>
+  </div>
+  <div id="countdown">
+    <div class="time-unit">
+      <hr class="countdown-line" />
+      <span id="days"></span>
+      <hr class="countdown-line" />
+      <div class="label">Kun</div>
+    </div>
+    <div class="time-unit bg-white">
+      <span id="hours"></span>
+      <div class="label">Soat</div>
+    </div>
+    <div class="time-unit">
+      <hr class="countdown-line" />
+      <span id="minutes"></span>
+      <hr class="countdown-line" />
+      <div class="label">Daqiqa</div>
+    </div>
+    <div class="time-unit bg-white">
+      <span id="seconds"></span>
+      <div class="label">Soniya</div>
+    </div>
+  </div>
+  <div class="register-btn open-popup">Roʻyxatdan oʻtish</div>
+</div>
+
+<div class="contact-section" id="contact">
+  <div class="contact-content">
+    <div class="contact-form">
+      <h1>Savollaringiz bormi??</h1>
+      <p>
+        Elektron pochtangizni va xabaringizni qoldiring va biz siz bilan bog'lanamiz.
+      </p>
+      <form id="contactForm" action="#">
+        <div class="form-col">
+          <div class="form-row">
+            {{ form_field('text', 'fullName', 'Ism', required=true) }} {{
+            form_field('email', 'email', 'E-mail manzili',
+            required=true) }}
+          </div>
+          {{ form_field('textarea', 'message', 'Xabaringizni yozing',
+          rows=3, required=true) }}
+
+          <div class="submit-btn">
+            <input type="submit" value="Yuborish" class="custom-submit" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="contact-info">
+      <h1>Biz bilan bog'lanish</h1>
+      <div class="contact-info-inner">
+        {{ contact_info_row( '../static/images/icons/location.png', 'Location
+        Icon', [ {'url': 'https://g.co/kgs/wGddftr', 'text': 'Silk Road
+        Samarkand International Tourism Center'}, ] ) }} {{ contact_info_row(
+        '../static/images/icons/telephone.png', 'Phone Icon', [ {'url':
+        'tel:+998999981119', 'text': '+998 99 998-11-19 (ang, uzb)'}, {'url':
+        'tel:+998998871031', 'text': '+998 99 887-10-31 (ang, uzb)'}, {'url':
+        'tel:+998999274949', 'text': '+998 99 927-49-49 (tur, uzb)'} ] ) }} {{
+        contact_info_row( '../static/images/icons/email.png', 'Email Icon', [
+        {'url': 'mailto:uzbekzargarsanoati@gmail.com', 'text':
+        'uzbekzargarsanoati@gmail.com'}, ] ) }}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.querySelector(".navbar");
+
+    function checkScroll() {
+      if (window.scrollY > 0) {
+        navbar.classList.remove("navbar-top");
+        navbar.classList.add("navbar-scrolled");
+      } else {
+        navbar.classList.add("navbar-top");
+        navbar.classList.remove("navbar-scrolled");
+      }
+    }
+
+    // Check scroll position on page load in case it's not at the top
+    checkScroll();
+
+    // Listen for scroll events
+    window.addEventListener("scroll", checkScroll);
+  });
+</script>
+<script>
+  function updateCountdown() {
+    const targetDate = new Date("2024-05-24T06:00:00");
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    } else {
+      document.getElementById("countdown").innerText = "Countdown is over!";
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+<script>
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevents the default form submission
+
+      // Collect the form data
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      // Define your API endpoint
+      const apiEndpoint =
+        "https://test-api.mdholding.uz/api/participants/register";
+
+      // Send the data using the Fetch API
+      fetch(apiEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.text()) // Handle as text
+        .then((data) => {
+          console.log("Success:", data);
+
+          // Clear the form fields
+          document.getElementById("contactForm").reset();
+
+          // Display the success message
+          displaySuccessMessage("Xabaringiz muvaffaqiyatli yuborildi!");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          // Display error message (optional)
+          displayErrorMessage(
+            "Xabaringizni yuborishda xatolik yuz berdi."
+          );
+        });
+    });
+
+  function displaySuccessMessage(message) {
+    // Create or select a message element
+    const messageElement =
+      document.getElementById("formSuccessMessage") ||
+      createMessageElement("formSuccessMessage");
+    messageElement.innerText = message;
+    messageElement.style.color = "green"; // Style as needed
+  }
+
+  function displayErrorMessage(message) {
+    const messageElement =
+      document.getElementById("formErrorMessage") ||
+      createMessageElement("formErrorMessage");
+    messageElement.innerText = message;
+    messageElement.style.color = "red"; // Style as needed
+  }
+
+  function createMessageElement(id) {
+    const messageElement = document.createElement("div");
+    messageElement.id = id;
+    document.querySelector(".contact-form").appendChild(messageElement);
+    return messageElement;
+  }
+</script>
+{% endblock %}

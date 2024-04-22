@@ -1,0 +1,261 @@
+{% extends "./en/layout.html" %} {% from "macros.html" import date_card,
+contact_info_row %} {% block body %}
+
+<div class="banner-section">
+  <div class="banner-container">
+    <div class="banner-date">
+      <p>24</p>
+      <hr class="banner-date-line" />
+      <p>25</p>
+      <hr class="banner-date-line" />
+      <p>26</p>
+      <hr class="banner-date-line" />
+      <p>MAY</p>
+    </div>
+    <div class="banner-info">
+      <p>PRESENTING</p>
+      <p>Uzbek Jewellery</p>
+      <p>Fair 2024.</p>
+      <p>
+        The second international luxurious jewellery, gems, and modern equipment
+        exhibition in Uzbekistan.
+      </p>
+      <div class="banner-btns">
+        <div class="register-btn open-popup">Register</div>
+        <a href="/about"><div class="learn-more-btn">Learn more</div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-about-section">
+  <p class="main-title">About Fair</p>
+  <div class="main-about-info">
+    <div class="main-about-text">
+      <p>
+        The jewelry industry in Uzbekistan has seen significant growth,
+        particularly, in 2023, the volume of jewelry production reached 6 450.0
+        kg, worth 2 050.0 billion sums. Currently, processing capacity has
+        increased by 1.2 times since 2022, reaching 18 tons. <br />
+        <br />
+        The exhibition-trade held in Tashkent in May 2023 was recognized by
+        participants and more than 3,000 visitors. Over 50 companies signed
+        agreements worth $100 million and boosted sales.
+      </p>
+      <a href="/about">
+        <div class="main-about-btn">Learn More</div>
+      </a>
+    </div>
+    <div class="main-about-grid">
+      <div class="main-about-grid-item">
+        <img src="../static/images/about1.jpg" alt="" />
+      </div>
+      <div class="main-about-grid-item">
+        <img src="../static/images/about2.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dates" class="dates-section">
+  <p class="main-title">Dates</p>
+  <p class="main-subtitle">
+    The opening ceremony will take place on May 24 at 11:00am.
+  </p>
+  <div class="date-grid">
+    {{ date_card('24.05.2024', [ {'time': '11:00 - 11:30', 'description':
+    'Exhibition opening ceremony.'}, {'time': '11:30 - 17:00', 'description':
+    'Business meetings with participants, negotiations. Meetings of
+    manufacturers and wholesale buyers of jewerely products.'} ]) }} {{
+    date_card('25.05.2024', [ {'time': '10:00 - 17:00', 'description': 'Business
+    meetings with participants.'}]) }} {{ date_card('26.05.2024', [ {'time':
+    '10:00 - 15:00', 'description': 'Business meetings with participants,
+    negotiations.'}, {'time': '15:00 - 16:00', 'description': 'Winners
+    announcement.'}, {'time': '16:30 - 17:00', 'description': 'Closing of the
+    exhibition, presentation of diplomas to participants.'}]) }}
+  </div>
+</div>
+
+<div class="countdown-section" id="countdown2">
+  <div class="countdown-header">
+    <h2>
+      THE SECOND INTERNATIONAL LUXURIOUS JEWELLERY, GEMS, AND EQUIPMENT
+      EXHIBITION IN UZBEKISTAN
+    </h2>
+    <p>Friday 24/05/2024, 06:00</p>
+  </div>
+  <div id="countdown">
+    <div class="time-unit">
+      <hr class="countdown-line" />
+      <span id="days"></span>
+      <hr class="countdown-line" />
+      <div class="label">Days</div>
+    </div>
+    <div class="time-unit bg-white">
+      <span id="hours"></span>
+      <div class="label">Hours</div>
+    </div>
+    <div class="time-unit">
+      <hr class="countdown-line" />
+      <span id="minutes"></span>
+      <hr class="countdown-line" />
+      <div class="label">Minutes</div>
+    </div>
+    <div class="time-unit bg-white">
+      <span id="seconds"></span>
+      <div class="label">Seconds</div>
+    </div>
+  </div>
+  <div class="register-btn open-popup">Register</div>
+</div>
+
+<div class="contact-section" id="contact">
+  <div class="contact-content">
+    <div class="contact-form">
+      <h1>Have a question?</h1>
+      <p>Leave your email and message and we’ll contact you.</p>
+      <form id="contactForm" action="#">
+        <div class="form-col">
+          <div class="form-row">
+            {{ form_field('text', 'fullName', 'Name', required=true) }} {{
+            form_field('email', 'email', 'Email', required=true) }}
+          </div>
+          {{ form_field('textarea', 'message', 'Message', rows=3, required=true)
+          }}
+
+          <div class="submit-btn">
+            <input type="submit" value="Submit" class="custom-submit" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="contact-info">
+      <h1>Contact Us</h1>
+      <div class="contact-info-inner">
+        {{ contact_info_row( '../static/images/icons/location.png', 'Location
+        Icon', [ {'url': 'https://g.co/kgs/wGddftr', 'text': 'Silk Road
+        Samarkand International Tourism Center'}, ] ) }} {{ contact_info_row(
+        '../static/images/icons/telephone.png', 'Phone Icon', [ {'url':
+        'tel:+998999981119', 'text': '+998 99 998-11-19 (eng, uzb)'}, {'url':
+        'tel:+998998871031', 'text': '+998 99 887-10-31 (eng, uzb)'}, {'url':
+        'tel:+998999274949', 'text': '+998 99 927-49-49 (turkish, uzb)'} ] ) }}
+        {{ contact_info_row( '../static/images/icons/email.png', 'Email Icon', [
+        {'url': 'mailto:uzbekzargarsanoati@gmail.com', 'text':
+        'uzbekzargarsanoati@gmail.com'}, ] ) }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.querySelector(".navbar");
+
+    function checkScroll() {
+      if (window.scrollY > 0) {
+        navbar.classList.remove("navbar-top");
+        navbar.classList.add("navbar-scrolled");
+      } else {
+        navbar.classList.add("navbar-top");
+        navbar.classList.remove("navbar-scrolled");
+      }
+    }
+
+    // Check scroll position on page load in case it's not at the top
+    checkScroll();
+
+    // Listen for scroll events
+    window.addEventListener("scroll", checkScroll);
+  });
+</script>
+<script>
+  function updateCountdown() {
+    const targetDate = new Date("2024-05-24T06:00:00");
+    const now = new Date();
+    const difference = targetDate - now;
+
+    if (difference > 0) {
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    } else {
+      document.getElementById("countdown").innerText = "Countdown is over!";
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+<script>
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevents the default form submission
+
+      // Collect the form data
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      // Define your API endpoint
+      const apiEndpoint =
+        "https://test-api.mdholding.uz/api/participants/register";
+
+      // Send the data using the Fetch API
+      fetch(apiEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.text()) // Handle as text
+        .then((data) => {
+          console.log("Success:", data);
+
+          // Clear the form fields
+          document.getElementById("contactForm").reset();
+
+          // Display the success message
+          displaySuccessMessage("Your message was sent successfully!");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          // Display error message (optional)
+          displayErrorMessage("There was an error sending your message.");
+        });
+    });
+
+  function displaySuccessMessage(message) {
+    // Create or select a message element
+    const messageElement =
+      document.getElementById("formSuccessMessage") ||
+      createMessageElement("formSuccessMessage");
+    messageElement.innerText = message;
+    messageElement.style.color = "green"; // Style as needed
+  }
+
+  function displayErrorMessage(message) {
+    const messageElement =
+      document.getElementById("formErrorMessage") ||
+      createMessageElement("formErrorMessage");
+    messageElement.innerText = message;
+    messageElement.style.color = "red"; // Style as needed
+  }
+
+  function createMessageElement(id) {
+    const messageElement = document.createElement("div");
+    messageElement.id = id;
+    document.querySelector(".contact-form").appendChild(messageElement);
+    return messageElement;
+  }
+</script>
+{% endblock %}

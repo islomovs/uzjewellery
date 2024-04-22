@@ -1,0 +1,15 @@
+{% extends "./uz/layout.html" %} {% block body %}
+<div class="company-detail-section">
+  <div class="back-btn">
+    <a href="/uz/catalog"><img src="../../static/images/back.png" alt="" />Ortga</a>
+  </div>
+  <div class="company-detail">
+    <img
+      src="{{ url_for('static', filename='images/uploads/' + card.image_filename) }}"
+      alt="{{ card.title }}"
+    />
+    <h1 class="company-detail-title">{{ card.title }}</h1>
+    <p class="company-detail-description">{{ card.description }}</p>
+  </div>
+</div>
+{% endblock %}

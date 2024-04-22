@@ -1,0 +1,46 @@
+{% extends "./uz/layout.html" %} {% from "macros.html" import paragraph, heading %}
+{% block body %}
+
+<div class="about-section">
+  {{ heading("YARMARKA HAQIDA", "/uz", "Ortga") }}
+  <div class="about-info">
+    {{ paragraph(paragraph1)}}
+    <br />
+
+    {{ paragraph(paragraph2)}}
+    <br />
+
+    {{ paragraph(paragraph3)}}
+  </div>
+  <div class="grid">
+    <div class="grid-item">
+      <img src="../static/images/about1.jpg" alt="Photo 1" />
+    </div>
+    <div class="grid-item">
+      <img src="../static/images/about2.jpg" alt="Photo 2" />
+    </div>
+    <div class="grid-item">
+      <img src="../static/images/about3.jpg" alt="Photo 3" />
+    </div>
+    <div class="grid-item">
+      <img src="../static/images/about4.jpg" alt="Photo 4" />
+    </div>
+    <div class="grid-item">
+      <img src="../static/images/about5.jpg" alt="Photo 5" />
+    </div>
+    <div class="grid-item">
+      <img src="../static/images/about6.jpg" alt="Photo 6" />
+    </div>
+    <div class="grid-item">
+      <img src="../static/images/about7.jpg" alt="Photo 7" />
+    </div>
+    <div class="grid-item">
+      <img src="../static/images/about8.jpg" alt="Photo 8" />
+    </div>
+    <div class="grid-item">
+      <img src="../static/images/about9.jpg" alt="Photo 9" />
+    </div>
+  </div>
+</div>
+
+{% endblock %}
