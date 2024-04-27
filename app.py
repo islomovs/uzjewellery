@@ -50,7 +50,7 @@ class MyAdminIndexView(AdminIndexView):
 @app.route('/create_user')
 def create_user():
     user = User(username='admin')
-    user.set_password('uzJewell654123')
+    user.set_password('secret5445')
     db.session.add(user)
     db.session.commit()
     return 'User created successfully!'
